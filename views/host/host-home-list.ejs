@@ -1,0 +1,81 @@
+<%-   include('../partials/head') %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  </head>
+  <body class="bg-gray-50 min-h-screen font-sans">
+    
+    <!-- Header -->
+    <%-   include('../partials/nav') %>
+
+
+    <!-- Main -->
+    <main class="flex-grow mt-10 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-extrabold text-pink-600 mb-6">
+          Heyy Host !There are your  Homes
+        </h2>
+
+        <ul class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <% if (Array.isArray(registeredHome) && registeredHome.length > 0) { %>
+            <% registeredHome.forEach(home => { %>
+              <li class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                <div class="relative">
+                  <!-- Home Image -->
+                  <img src="<%= home.photoUrl %>" alt="<%= home.housename %>" class="w-full h-60 object-cover">
+                  
+                  <!-- Rating Badge -->
+                  <span class="absolute top-4 left-4 bg-pink-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md">
+                    <%= home.rating %> ★
+                  </span>
+                  
+                  <!-- Favorite Icon -->
+                  <button class="absolute top-4 right-4 bg-white text-pink-600 p-2 rounded-full shadow-md hover:bg-pink-100 transition-all duration-300">
+                    <i class="fa-regular fa-heart text-xl"></i>
+                  </button>
+                </div>
+                
+                <div class="p-6">
+                  <!-- Home Name -->
+                  <h3 class="text-2xl font-bold text-gray-800 mb-3 truncate">
+                    <%= home.housename %>
+                  </h3>
+                  
+                  <!-- Location -->
+                  <p class="text-gray-600 flex items-center mb-2">
+                    <i class="fas fa-map-marker-alt text-pink-500 mr-2"></i>
+                    <span class="font-medium"><%= home.location %></span>
+                  </p>
+                  
+                  <!-- Price -->
+                  <p class="text-gray-600 flex items-center mb-4">
+                    <i class="fas fa-rupee-sign text-green-500 mr-2"></i>
+                    <span class="font-medium">₹<%= home.price %>/night</span>
+                  </p>
+                  
+                  <!-- Action Buttons -->
+                  <div class="flex gap-4">
+                    <a href="/edit/<%= home.id %>" class="flex-1 text-center bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold py-3 rounded-full shadow-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
+                      Edit
+                    </a>
+                    <a href="/delete/<%= home.id %>" class="flex-1 text-center bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold py-3 rounded-full shadow-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105">
+                      Delete
+                    </a>
+                  </div>
+                </div>
+              </li>
+            <% }) %>
+          <% } else { %>
+            <li class="text-red-500 col-span-full text-lg font-semibold text-center">
+              No registered homes found.
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </main>
+    <!-- Footer -->
+     
+    <%-   include('../partials/footer') %>
+
+    
+  </body>
+</html>

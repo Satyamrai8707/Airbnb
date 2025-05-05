@@ -1,0 +1,40 @@
+<header class="w-full bg-white shadow-md sticky top-0 z-20">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <h1 class="text-3xl font-extrabold text-pink-600 tracking-wide">Airbnb</h1>
+
+    <!-- Navigation Links -->
+    <div class="flex space-x-4">
+      <a
+        href="/host/add-home"
+        class="<%= currentPage === 'addHome' ? 'bg-gray-100 text-pink-600' : ' text-white bg-pink-600' %> px-6 py-2 rounded-full font-medium shadow-md hover:bg-gray-200 hover:text-pink-700 transition duration-300"
+      >
+        Add Home
+      </a>
+      <a
+        href="/"
+        class="<%= currentPage === 'Home' ? 'bg-gray-100 text-pink-600' : ' text-white bg-pink-600' %> px-6 py-2 rounded-full font-medium shadow-md hover:bg-gray-200 hover:text-pink-700 transition duration-300"
+      >
+        Home
+      </a>
+      <a
+      href="/favourite"
+      class="<%= currentPage === 'favourite-list' ? 'bg-gray-100 text-pink-600' : ' text-white bg-pink-600' %> px-6 py-2 rounded-full font-medium shadow-md hover:bg-gray-200 hover:text-pink-700 transition duration-300"
+    >
+      Favorite List
+    </a>
+    <a
+    href="/host/host-home-list"
+    class="<%= currentPage === 'host-home-list' ? 'bg-gray-100 text-pink-600' : ' text-white bg-pink-600' %> px-6 py-2 rounded-full font-medium shadow-md hover:bg-gray-200 hover:text-pink-700 transition duration-300"
+  >
+    Host Home List
+  </a>
+      <a
+        href="/bookings"
+        class="<%= currentPage === 'bookings' ? 'bg-gray-100 text-pink-600' : ' text-white bg-pink-600' %> px-6 py-2 rounded-full font-medium shadow-md hover:bg-gray-200 hover:text-pink-700 transition duration-300"
+      >
+        Bookings
+      </a>
+    </div>
+  </div>
+</header>

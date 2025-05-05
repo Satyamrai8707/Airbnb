@@ -1,0 +1,55 @@
+<%-   include('../partials/head') %>
+
+  </head>
+  <body class="bg-gray-50 min-h-screen font-sans">
+    
+    <!-- Header -->
+    <%-   include('../partials/nav') %>
+
+
+    <!-- Main -->
+    <main class="flex-grow mt-10 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-extrabold text-pink-600 mb-6">
+          Here are available your Favorite Homes :
+        </h2>
+
+        <ul class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <% if (Array.isArray(registeredHome) && registeredHome.length > 0) { %>
+            <% registeredHome.forEach(home => { %>
+              <li class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 ">
+                <div class="relative">
+                  <img src="<%= home.photoUrl %>" alt="<%= home.housename %>" class="w-full h-60 object-cover">
+                  <span class="absolute top-4 left-4 bg-pink-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md">
+                    <%= home.rating %> ★
+                  </span>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold text-gray-800 mb-3 truncate"><%= home.housename %></h3>
+                  <p class="text-gray-600 flex items-center mb-2">
+                    <i class="fas fa-map-marker-alt text-pink-500 mr-2"></i>
+                    <span class="font-medium"><%= home.location %></span>
+                  </p>
+                  <p class="text-gray-600 flex items-center mb-4">
+                    <i class="fas fa-dollar-sign text-green-500 mr-2"></i>
+                    <span class="font-medium">₹<%= home.price %>/night</span>
+                  </p>
+                  <a href="/book/<%= home.id %>" class="block text-center bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold py-3 rounded-full shadow-lg hover:from-pink-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105">
+                    Book Now
+                  </a>
+                </div>
+              </li>
+            <% }) %>
+          <% } else { %>
+            <li class="text-red-500 col-span-full text-lg font-semibold text-center">No registered homes found.</li>
+          <% } %>
+        </ul>
+      </div>
+    </main>
+    <!-- Footer -->
+     
+    <%-   include('../partials/footer') %>
+
+    
+  </body>
+</html>

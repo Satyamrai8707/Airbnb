@@ -65,10 +65,40 @@ exports.getFavouriteList = (req, res, next) => {
     });
 }
 
+exports.postFavouriteList = (req,res,next) => {
+    console.log('Came to add to fav',req.body);
+    res.redirect('/favourite')
+
+
+}
+
 exports.getHostHomes = (req, res, next) => {
     const registeredHome = Home.fetchAll(registeredHome =>{
         res.render('host/host-home-list', {registeredHome : registeredHome,
             pageTitle: 'Host Home List',  currentPage: "host-home-list"
         })
     });
+}
+
+exports.getHomeDetail = (req, res, next) => {
+    const homeId = req.params.homeId;
+   
+    Home.findById(homeId, home => {
+        if (!home) {
+            console.log("Home not found");
+            res.redirect('/homes')
+        
+    }
+    else{
+        res.render('store/home-detail', {pageTitle: 'Home Detail', currentPage: "Home", home: home})
+
+
+        }
+      
+
+      
+    })
+
+
+    
 }

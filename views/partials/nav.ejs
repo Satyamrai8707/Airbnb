@@ -1,7 +1,15 @@
 <header class="w-full bg-white shadow-md sticky top-0 z-20">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <!-- Logo -->
-    <h1 class="text-3xl font-extrabold text-pink-600 tracking-wide">Airbnb</h1>
+  <!-- Logo -->
+
+  <a
+    href="/"
+    class="<%= currentPage === 'index' ? 'bg-gray-100 text-pink-600' : ' text-white bg-pink-600' %> px-6 py-2 rounded-full font-medium shadow-md hover:bg-gray-200 hover:text-pink-700 transition duration-300"
+
+  >
+    airbnb
+  </a>
 
     <!-- Navigation Links -->
     <div class="flex space-x-4">
@@ -12,10 +20,10 @@
         Add Home
       </a>
       <a
-        href="/"
+        href="/homes"
         class="<%= currentPage === 'Home' ? 'bg-gray-100 text-pink-600' : ' text-white bg-pink-600' %> px-6 py-2 rounded-full font-medium shadow-md hover:bg-gray-200 hover:text-pink-700 transition duration-300"
       >
-        Home
+        Home List
       </a>
       <a
       href="/favourite"

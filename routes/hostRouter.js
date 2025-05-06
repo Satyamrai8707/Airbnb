@@ -16,4 +16,7 @@ hostRouter.post("/add-home", homesController.postAddHome);
 
 hostRouter.get("/host-home-list", homesController.getHostHomes);
 
+
+
+
 exports.hostRouter = hostRouter

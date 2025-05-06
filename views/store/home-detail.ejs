@@ -1,0 +1,81 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 via-white to-gray-200 min-h-screen font-sans">
+
+  <!-- Header -->
+  <%- include('../partials/nav') %>
+
+  <!-- Main Content -->
+  <main class="flex-grow mt-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-3xl transition-shadow duration-500 ease-in-out">
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        
+        <!-- Image Section -->
+        <div class="relative">
+          <img src="<%= home.photoUrl %>" alt="<%= home.name %>" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+          <span class="absolute top-5 left-5 bg-pink-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg">
+            <%= home.rating %> ★
+          </span>
+        </div>
+
+        <!-- Details Section -->
+        <div class="p-8 md:p-10 space-y-6 bg-gray-50">
+          <!-- Title -->
+          <h2 class="text-3xl font-bold text-gray-800 tracking-tight"><%= home.name %></h2>
+
+          <!-- Description -->
+          <section class="border-b pb-4">
+            <h3 class="text-xl font-semibold text-gray-700 mb-2">Description</h3>
+            <p class="text-gray-600 leading-relaxed text-justify"><%= home.description %></p>
+          </section>
+
+          <!-- Location -->
+          <section class="border-b pb-4">
+            <h3 class="text-xl font-semibold text-gray-700 mb-2">Location</h3>
+            <p class="flex items-center text-gray-600">
+              <i class="fas fa-map-marker-alt text-pink-500 mr-2"></i>
+              <%= home.location %>
+            </p>
+          </section>
+
+          <!-- Price -->
+          <section class="border-b pb-4">
+            <h3 class="text-xl font-semibold text-gray-700 mb-2">Price</h3>
+            <p class="text-green-600 text-2xl font-bold tracking-wide">
+              ₹<%= home.price %> <span class="text-sm text-gray-500 font-normal">/ night</span>
+            </p>
+          </section>
+
+          <!-- Rating -->
+          <section class="border-b pb-4">
+            <h3 class="text-xl font-semibold text-gray-700 mb-2">Rating</h3>
+            <div class="flex items-center space-x-2">
+              <span class="text-yellow-400 text-2xl">★</span>
+              <span class="text-lg text-gray-600 font-medium"><%= home.rating %> / 5</span>
+            </div>
+          </section>
+
+          <!-- Favorite Button -->
+          <div class="mt-4">
+            <%- include('../partials/favourite') %>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row sm:space-x-4 mt-6 space-y-4 sm:space-y-0">
+            <a href="/book/<%= home.id %>" class="w-full text-center bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+              Book Now
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

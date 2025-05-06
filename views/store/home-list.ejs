@@ -27,11 +27,13 @@
                 </span>
 
                 <!-- Favorite Icon -->
-                <a href="/favourite">
-                  <button class="absolute top-4 right-4 p-0 bg-transparent border-0">
+                <form action="/favourite" method="post">
+                  <input type="hidden" name="id" value="<%= home.id %>">
+                  <button type="submit" class="absolute top-4 right-4 p-0 bg-transparent border-0">
                     <i class="fa-regular fa-heart text-xl text-white hover:text-red-500 p-2 rounded-full transition-all duration-300"></i>
                   </button>
-                </a>
+                </form>
+                
               </div>
 
               <div class="p-6">
@@ -59,6 +61,7 @@
                 <a href="/book/<%= home.id %>" class="block text-center bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold py-3 rounded-full shadow-lg hover:from-pink-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 mt-4">
                   Book Now
                 </a>
+                <%- include('../partials/favourite', {home: home}) %>
               </div>
             </li>
           <% }) %>

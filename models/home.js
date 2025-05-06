@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path');
 const rootPath = require('../utils/pathUtil');
 
+const homeDataPath = path.join(rootPath, 'data', 'homes.json');
 
 
 
@@ -19,8 +20,7 @@ module.exports = class Home {
         this.id = Math.random().toString()
         Home.fetchAll(registeredHome =>{
             registeredHome.push(this);
-            const homeData = path.join(rootPath, 'data', 'homes.json');
-            fs.writeFile(homeData, JSON.stringify(registeredHome), (err) => {
+            fs.writeFile(homeDataPath, JSON.stringify(registeredHome), (err) => {
                 if (err) {
                     console.log(err);
                 } else {
@@ -33,13 +33,10 @@ module.exports = class Home {
     }
 
     static fetchAll(callback) {
-        const homeDataPath = path.join(rootPath, 'data', 'homes.json');
         fs.readFile(homeDataPath,(err,data) => {
             callback(!err ? JSON.parse(data) : []);
         })
-
-
-    }
+ }
 
     static findById(homeId, callback) {
         this.fetchAll(homes => {
